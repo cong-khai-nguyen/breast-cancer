@@ -14,14 +14,22 @@ y = cancer.target
 
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size= 0.2)
 
+# Use KNN model to classify
+clf = KNeighborsClassifier(n_neighbors = 4)
+clf.fit(x_train, y_train)
+y_pred = clf.predict(x_test)
+accuracy = metrics.accuracy_score(y_test, y_pred)
+# 92.105263%
+print("KNN:", format(accuracy, "%"))
+
 
 # Use SVC without adding any parameters
-# clf = svm.SVC()
-# clf.fit(x_train, y_train)
-# y_pred = clf.predict(x_test)
-# accuracy = metrics.accuracy_score(y_test, y_pred)
-# # 87.719298%
-# print(format(accuracy, "%"))
+clf = svm.SVC()
+clf.fit(x_train, y_train)
+y_pred = clf.predict(x_test)
+accuracy = metrics.accuracy_score(y_test, y_pred)
+# 87.719298%
+print("SVM(wihtout kernel):", format(accuracy, "%"))
 
 # use one kernel: linear with soft/hard margin or poly with degree
 clf = svm.SVC(kernel = "linear", C=2)
@@ -29,15 +37,6 @@ clf.fit(x_train, y_train)
 y_pred = clf.predict(x_test)
 accuracy = metrics.accuracy_score(y_test, y_pred)
 # 98.245614%
-print(format(accuracy, "%"))
-
-# Use KNN model to classify
-clf = KNeighborsClassifier(n_neighbors=9)
-clf.fit(x_train, y_train)
-y_pred = clf.predict(x_test)
-accuracy = metrics.accuracy_score(y_test, y_pred)
-# 92.105263%
-print(format(accuracy, "%"))
+print("SVM(with kernel):", format(accuracy, "%"))
 
 
-classes = ['malignant', 'benign']
