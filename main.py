@@ -29,7 +29,7 @@ clf.fit(x_train, y_train)
 y_pred = clf.predict(x_test)
 accuracy = metrics.accuracy_score(y_test, y_pred)
 # 90.350877%
-print("SVM(wihtout kernel):", format(accuracy, "%"))
+print("SVM(without kernel):", format(accuracy, "%"))
 
 
 
