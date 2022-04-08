@@ -23,7 +23,7 @@ accuracy = metrics.accuracy_score(y_test, y_pred)
 print("KNN:", format(accuracy, "%"))
 
 
-# Use SVC without adding any parameters
+# Use SVM without adding any parameters
 clf = svm.SVC()
 clf.fit(x_train, y_train)
 y_pred = clf.predict(x_test)
